@@ -5,20 +5,20 @@
 
 void initToy(void)
 {
-  initClocks(void);
-  initLEDs(void);
-  initButtons(void);
-  initBuzzer(void);
+  initClocks();
+  initLEDs();
+  initButtons();
+  initBuzzer();
 }
 
 void initClocks(void)
 {
   WDTCTL = WDTPW | WDTHOLD; // disable WDT
-  BCSCTL1 = CALB1_16MHZ;    // set DCO to 16 MHz
+  BCSCTL1 = CALBC1_16MHZ;   // set DCO to 16 MHz
   DCOCTL = CALDCO_16MHZ;
 
   BCSCTL2 &= ~SELS;         // SMCLK source = DCO
-  BCSCTL2 |= DIVS_3         // SMCLK = DC0/8
+  BCSCTL2 |= DIVS_3;        // SMCLK = DC0/8
 }
 
 void initLEDs(void)
@@ -36,7 +36,7 @@ void initLEDs(void)
   wdtCountGreen = 0;
 
   // setup PWM duty cycle to 50% for both LEDs
-  dutyCylceRed = 5;
+  dutyCycleRed = 5;
   dutyCycleGreen = 5;
 }
 

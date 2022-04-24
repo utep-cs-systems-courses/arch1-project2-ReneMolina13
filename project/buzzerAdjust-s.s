@@ -1,3 +1,4 @@
+	.arch msp430g2553
 	.extern buzzerMax
 	.extern buzzerIncrease
 	.extern buzzerDecrease

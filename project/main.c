@@ -2,6 +2,7 @@
 #include "libTimer.h"
 #include "led.h"
 #include "toyCtrl.h"
+#include "initToy.h"
 
 int main(void)
 {

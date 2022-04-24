@@ -12,19 +12,19 @@ all: led-c.elf led-s.elf
 
 #additional rules for files
 led-c.elf: ${COMMON_OBJECTS} buzzerAdjust-c.o
-	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ ../demos/lib/libTimer.a
 led-s.elf: ${COMMON_OBJECTS} buzzerAdjust-s.o
-	${AS} ${CFLAGS} ${LDFLAGS} -o $@ $^
+	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^ ../demos/lib/libTimer.a
 
 load-c: led-c.elf
-	$msp430loader.sh
+	msp430loader.sh $^
 load-s: led-s.elf
-	$msp430loader.sh
+	msp430loader.sh $^
 
 clean: $^
-	rm -f *. *.elf
+	rm -f *.o *.elf
 
-main.o: libTimer.h led.h toyCtrl.h
+main.o: led.h initToy.h toyCtrl.h
 toyCtrl.o: led.h toyCtrl.h adjustPWM.h
 adjustPWM.o: led.h toyCtrl.h adjustPWM.h
 initToy.o: led.h initToy.h toyCtrl.h
