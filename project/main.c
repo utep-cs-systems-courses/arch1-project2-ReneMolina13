@@ -42,7 +42,7 @@ void __interrupt_vec(PORT2_VECTOR) Port_2()
     button_interrupt_handler();
 }
 
-// handles PWM for LEDs (32,000 interrups/sec)
+// handles PWM for LEDs (250 interrups/sec)
 void __interrupt_vec(WDT_VECTOR) WDT()
 {
   wdtCountRed++;

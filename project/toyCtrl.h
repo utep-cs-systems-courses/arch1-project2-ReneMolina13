@@ -12,8 +12,8 @@
 #define BUZZER_ZERO 3
 
 // PWM period constants
-#define LED_PWM_PERIOD 10 // 1/3 ms or roughly 10 WDT interrutps
-#define BUZZER_PWM_PERIOD (int) (2000000 * (4.0/3/1000)) // 1 1/3 ms or roughly 2,666 clock cycles
+#define LED_PWM_PERIOD 10 // 10 WDT interrupts = PWM period of 40 ms
+#define BUZZER_PWM_PERIOD 1000 // 1000 clock cycles = PWM period of 0.5 ms
 
 volatile int dutyCycleRed;       // holds duty cycle of the red LED as an integer (0-10)
 volatile int dutyCycleGreen;     // holds duty cycle of the green LED as an integer (0-10)

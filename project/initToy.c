@@ -18,7 +18,7 @@ void initClocks(void)
   DCOCTL = CALDCO_16MHZ;
 
   BCSCTL2 &= ~SELS;         // SMCLK source = DCO
-  BCSCTL2 |= DIVS_3;        // SMCLK = DC0/8
+  BCSCTL2 |= DIVS_3;        // SMCLK = DC0/8 (2 MHz)
 }
 
 void initLEDs(void)
@@ -30,7 +30,7 @@ void initLEDs(void)
   P2OUT |= LED_BOTH; // turn LEDs on
 
   // turn on WDT, setup for timer mode, clear count
-  WDTCTL = WDTPW | WDTTMSEL | WDTCNTCL | 3; // setup for 32,000 interrupts/sec
+  WDTCTL = WDTPW | WDTTMSEL | WDTCNTCL | 1; // setup for 250 interrupts/sec
   IE1 |= WDTIE;
   wdtCountRed = 0;
   wdtCountGreen = 0;
@@ -65,7 +65,7 @@ void initBuzzer(void)
   // setup Timer A for up mode with clock source = SMCLK
   TACTL = TASSEL_2 | MC_1;    // no interrupts or clock division
   TACCTL0 = OUTMOD_7;         // reset/set mode, no interrupts, compare mode
-  TACCR0 = BUZZER_PWM_PERIOD; // set CCR0 for a PWM period for 2,666 cycles (1 1/3 ms)
+  TACCR0 = BUZZER_PWM_PERIOD; // set CCR0 for a PWM period for 1,000 cycles (0.5 ms)
   dutyCycleBuzzer = 0.5;      // set duty cycle to 50%
   TACCR1 = (int) (dutyCycleBuzzer * BUZZER_PWM_PERIOD); // set CCR1 for a duty cycle of 50%
 }
