@@ -4,7 +4,7 @@
 #include "adjustPWM.h"
 
 void adjustRed(int direction)
-{
+{  
   switch (direction) {
   case RED_INCREASE:
     increaseRed();

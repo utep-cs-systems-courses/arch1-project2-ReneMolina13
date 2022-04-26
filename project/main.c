@@ -46,18 +46,19 @@ void __interrupt_vec(PORT2_VECTOR) Port_2()
 void __interrupt_vec(WDT_VECTOR) WDT()
 {
   wdtCountRed++;
-  if (wdtCountRed == dutyCycleRed)
-    P2OUT &= ~LED_RED;
+  if (wdtCountRed == dutyCycleRed) {
+    P1OUT ^= LED_RED;
+  }
   if (wdtCountRed >= LED_PWM_PERIOD) {
-    P2OUT |= LED_RED;
+    P1OUT ^= LED_RED;
     wdtCountRed = 0;
   }
 
   wdtCountGreen++;
   if (wdtCountGreen == dutyCycleGreen)
-    P2OUT &= ~LED_GREEN;
+    P1OUT ^= LED_GREEN;
   if (wdtCountGreen >= LED_PWM_PERIOD) {
-    P2OUT |= LED_GREEN;
+    P1OUT ^= LED_GREEN;
     wdtCountGreen = 0;
   }
 }

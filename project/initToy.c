@@ -24,10 +24,10 @@ void initClocks(void)
 void initLEDs(void)
 {
   // setup LEDs for GPIO output
-  P2SEL &= ~LED_BOTH;
-  P2SEL2 &= ~LED_BOTH;
-  P2DIR |= LED_BOTH;
-  P2OUT |= LED_BOTH; // turn LEDs on
+  P1SEL &= ~LED_BOTH;
+  P1SEL2 &= ~LED_BOTH;
+  P1DIR |= LED_BOTH;
+  P1OUT |= LED_BOTH; // turn LEDs on
 
   // turn on WDT, setup for timer mode, clear count
   WDTCTL = WDTPW | WDTTMSEL | WDTCNTCL | 1; // setup for 250 interrupts/sec
