@@ -15,6 +15,5 @@ void adjustBuzzer(int direction)
     buzzerDecrease();
     break;
   case BUZZER_ZERO:
-    buzzerZero();
   }
 }

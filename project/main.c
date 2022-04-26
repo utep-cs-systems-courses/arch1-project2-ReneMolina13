@@ -29,7 +29,7 @@ void button_interrupt_handler()
     break;
   case BUTTON_3:
     adjustGreen(GREEN_DECREASE);
-    adjustBuzzer(BUZZER_DECREASE);
+    adjustBuzzer(BUZZER_ZERO);
   }
 }
 
