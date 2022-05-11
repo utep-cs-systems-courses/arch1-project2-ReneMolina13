@@ -66,6 +66,6 @@ void initBuzzer(void)
   TACTL = TASSEL_2 | MC_1;    // no interrupts or clock division
   TACCTL0 = OUTMOD_7;         // reset/set mode, no interrupts, compare mode
   TACCR0 = BUZZER_PWM_PERIOD; // set CCR0 for a PWM period for 1,000 cycles (0.5 ms)
-  dutyCycleBuzzer = 0.5;      // set duty cycle to 50%
+  dutyCycleBuzzer = 1;        // set duty cycle to 100%
   TACCR1 = (int) (dutyCycleBuzzer * BUZZER_PWM_PERIOD); // set CCR1 for a duty cycle of 50%
 }
